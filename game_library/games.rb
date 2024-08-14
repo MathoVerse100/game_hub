@@ -30,5 +30,3 @@ module Games
     content.join("\n").split("\n")
   end
 end
-
-p Games.get_games
