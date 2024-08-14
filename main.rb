@@ -5,14 +5,19 @@ require_relative 'game_library/board_games/board_game'
 
 def main
   game_classes, game_names = load_games
-  user_choice = loop do
+  user_choice = nil
+  loop do
     puts "Choose a game from the available ones below (type the associated number of the game)\n\n"
     game_names.each_with_index do |game, index|
       puts "(#{index + 1}) #{game}\n"
     end
+
     print "\n---> "
     input = gets.chomp.strip
-    return input.to_i if input.match(/^\d+$/) && 1 <= input.to_i && input.to_i <= game_names.length
+    if input.match(/^\d+$/) && 1 <= input.to_i && input.to_i <= game_names.length
+      user_choice = input.to_i
+      break
+    end
   end
   
   play(game_classes[user_choice - 1])
