@@ -6,8 +6,8 @@ require_relative 'game_library/board_games/board_game'
 def main
   game_classes, game_names = load_games
   user_choice = nil
+  puts "Choose a game from the available ones below (type the associated number of the game)\n\n"
   loop do
-    puts "Choose a game from the available ones below (type the associated number of the game)\n\n"
     game_names.each_with_index do |game, index|
       puts "(#{index + 1}) #{game}\n"
     end
@@ -18,6 +18,8 @@ def main
       user_choice = input.to_i
       break
     end
+
+    puts "Invalid choice. Please enter the correct game number.\n\n"
   end
   
   play(game_classes[user_choice - 1])
